@@ -1,0 +1,25 @@
+{
+  "name": "Web-Server-Practice_Music-Player",
+  "version": "1.0.0",
+  "description": "Create a music player application similar to (but a lot simpler than) Spotify or Soundcloud.",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/breyana/Web-Server-Practice_Music-Player.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/breyana/Web-Server-Practice_Music-Player/issues"
+  },
+  "homepage": "https://github.com/breyana/Web-Server-Practice_Music-Player#readme"
+}
