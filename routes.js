@@ -5,6 +5,15 @@ const artists = require('./data/artists.json')
 const albums = require('./data/albums.json')
 const songs = require('./data/songs.json')
 
+function convertToMinutes(time) {
+  let minutes = Math.floor(time / 60)
+  let seconds = time - minutes * 60
+  if (seconds < 10) {
+    seconds = "0"+seconds
+  }
+  return minutes + ':' + seconds
+}
+
 const albumsWithArtists = albums.map((album) => {
   album.artist = artists.filter((artist) => {
     return artist.id === album.artist_id
@@ -19,6 +28,7 @@ const songsWithArtistAlbum = songs.map((song) => {
   song.album = correspondingAlbum.title
   song.artist = correspondingAlbum.artist
   song.artist_id = correspondingAlbum.artist_id
+  song.length = convertToMinutes(song.length)
   return song
 })
 
