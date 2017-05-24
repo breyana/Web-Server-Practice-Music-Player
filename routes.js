@@ -53,14 +53,32 @@ router.get('/artists/:artist_id', function(request, response) {
     return artist.id == request.params.artist_id
   })[0]
 
+  const artistAlbums = albums.filter((album) => {
+    return album.artist_id == request.params.artist_id
+  })
+
   response.render('artist', {
     name: artist.name,
-    genre: artist.genre
+    genre: artist.genre,
+    albums: artistAlbums
   })
 })
 
 router.get('/albums/:album_id', function(request, response) {
-  response.render('album')
+  const album = albumsWithArtists.filter((album) => {
+    return album.id == request.params.album_id
+  })[0]
+
+  const albumSongs = songsWithArtistAlbum.filter((song) => {
+    return song.album_id == request.params.album_id
+  })
+
+  response.render('album', {
+    title: album.title,
+    year: album.year,
+    artist: album.artist,
+    songs: albumSongs,
+  })
 })
 
 module.exports = router
