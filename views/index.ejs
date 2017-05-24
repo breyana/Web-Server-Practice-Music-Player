@@ -9,6 +9,13 @@
     <div class="container">
       <%- include('partials/navbar') %>
     </div>
-    <p>ARTISTS</p>
+    <div class="artists-list">
+      <% artists.forEach((artist) => { %>
+        <a href="/artist/<%= artist.id %>" class="artist-info">
+          <h4 class="artist-name"><%= artist.name %></h4>
+          <p class="artist-genre"><%= artist.genre %></p>
+        </a>
+      <% }) %>
+    </div>
   </body>
 </html>

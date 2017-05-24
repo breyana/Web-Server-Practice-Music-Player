@@ -1,8 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
+const artists = require('./data/artists.json')
+
+
 router.get('/', function(request, response) {
-  response.render('index')
+  response.render('index', { artists: artists })
 })
 
 router.get('/albums', function(request, response) {
