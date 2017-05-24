@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const artists = require('./data/artists.json')
+const albums = require('./data/albums.json')
 
 
 router.get('/', function(request, response) {
@@ -9,7 +10,16 @@ router.get('/', function(request, response) {
 })
 
 router.get('/albums', function(request, response) {
-  response.render('albums')
+  //connecting the albums.artist_id with artists
+  const albumsWithArtists = albums.map((album) => {
+    album.artist = artists.filter((artist) => {
+      return artist.id === album.artist_id
+    })[0].name
+    return album
+  })
+  response.render('albums', {
+    albums: albumsWithArtists
+  })
 })
 
 router.get('/songs', function(request, response) {
