@@ -1,9 +1,10 @@
 const express = require('express')
 const app = express()
+const routes = require('./routes')
 
-app.get('/', function (request, response) {
-  response.send('Hello Worrrrrrld')
-})
+app.set('view engine', 'ejs')
+
+app.use('/', routes)
 
 app.use(express.static('public'))
 
