@@ -17,7 +17,14 @@ router.get('/songs', function(request, response) {
 })
 
 router.get('/artists/:artist_id', function(request, response) {
-  response.render('artist')
+  const artist = artists.filter((artist) => {
+    return artist.id == request.params.artist_id
+  })[0]
+
+  response.render('artist', {
+    name: artist.name,
+    genre: artist.genre
+  })
 })
 
 router.get('/albums/:album_id', function(request, response) {
