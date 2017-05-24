@@ -11,10 +11,11 @@
     </div>
     <div class="albums-list">
       <% albums.forEach((album) => { %>
-        <a href="/albums/<%= album.id %>" class="album-info">
+        <a href="/albums/<%= album.id %>" class="album-info-link">
           <h4 class="album-title"><%= album.title %></h4>
         </a>
-        <p class="album-artist"><%= album.artist %></p>
+        <a href="/artists/<%= album.artist_id %>" class="artist-info-link">
+          <p class="album-artist"><%= album.artist %></p>
       <% }) %>
     </div>
   </body>
