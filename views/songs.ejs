@@ -11,9 +11,7 @@
     </div>
     <div class="songs-list">
       <% songs.forEach((song) => { %>
-        <a href="/songs/<%= song.id %>" class="song-info-link">
-          <h4 class="song-title"><%= song.title %></h4>
-        </a>
+        <h4 class="song-title"><%= song.title %></h4>
         <a href="/artists/<%= song.artist_id %>" class="artist-info-link">
           <p class="song-artist"><%= song.artist %></p>
         </a>
