@@ -40,8 +40,15 @@ const songsFullData = songs.map((song) => {
   return song
 })
 
+const artistsFullData = artists.map((artist) => {
+  artist.albums = albumsFullData.filter((album) => {
+    return album.artist_id == artist.id
+  })
+  return artist
+})
+
 router.get('/', (request, response) => {
-  response.render('index', { artists: artists })
+  response.render('index', { artists: artistsFullData })
 })
 
 router.get('/albums', (request, response) => {
@@ -57,18 +64,14 @@ router.get('/songs', (request, response) => {
 })
 
 router.get('/artists/:artist_id', (request, response) => {
-  const artist = artists.filter((artist) => {
+  const artist = artistsFullData.filter((artist) => {
     return artist.id == request.params.artist_id
   })[0]
-
-  const artistAlbums = albums.filter((album) => {
-    return album.artist_id == request.params.artist_id
-  })
 
   response.render('artist', {
     name: artist.name,
     genre: artist.genre,
-    albums: artistAlbums
+    albums: artist.albums
   })
 })
 
