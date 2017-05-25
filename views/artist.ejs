@@ -10,12 +10,14 @@
       <%- include('partials/navbar') %>
     </div>
     <p><%= name %></p>
+    <p>Albums: <%= albums.length %></p>
     <p><%= genre %></p>
     <% albums.forEach((album) => { %>
       <a href="/albums/<%= album.id %>" class="album-info-link">
         <p><%= album.title %></p>
       </a>
       <p><%= album.year %></p>
+      <p><%= album.song_count %> Songs</p>
     <% }) %>
   </body>
 </html>
