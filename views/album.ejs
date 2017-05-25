@@ -14,6 +14,7 @@
       <p><%= artist %></p>
     </a>
     <p><%= year %></p>
+    <p><%= songs.length %> Songs</p>
     <div class="songs-list">
       <% songs.forEach((song) => { %>
         <p><%= song.title %> - Track Number: <%= song.track_no %> Length: <%= song.length %></p>

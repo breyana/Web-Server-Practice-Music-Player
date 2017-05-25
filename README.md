@@ -86,12 +86,12 @@ Use the [fake data set](#fake-data) provided.
 
 Improve the views by adding _summary_ data (e.g. song count for album), parsing the song length into minutes and seconds, showing actual album artwork and artist profile images, and integrating a CSS framework to make it prettier.
 
-- [ ] Main view (`/`) shows an album count for each artist.
-- [ ] Album list view (`/albums`) shows a song count for each album.
-- [ ] Artist view (`/artists/:artist_id`) shows an album count for the artist.
-- [ ] Artist view (`/artists/:artist_id`) shows a song count for each album.
-- [ ] Album view (`/albums/:album_id`) shows a song count for the album.
-- [ ] On all views that show song length, the length is shown in `mm:ss` format.
+- [x] Main view (`/`) shows an album count for each artist.
+- [x] Album list view (`/albums`) shows a song count for each album.
+- [x] Artist view (`/artists/:artist_id`) shows an album count for the artist.
+- [x] Artist view (`/artists/:artist_id`) shows a song count for each album.
+- [x] Album view (`/albums/:album_id`) shows a song count for the album.
+- [x] On all views that show song length, the length is shown in `mm:ss` format.
     For example, if the song has a length of 286 seconds, then it would be shown as `04:46` (286 seconds = 4 minutes, 46 seconds).
 - [ ] Actual album images are used instead of placeholders on albums list (`/albums`), artist (`/artists/:artist_id`), and album (`/albums/:album_id`) views.
     **Hint:** once you find an image (Google image search is a good place for this), you can add the URL to the `albums.json` fake data file.
@@ -174,3 +174,20 @@ And if you get through those, try turning [Bossggle][bossggle-word-game] into an
 ##### Fake Data
 
 Don't worry about making your own data for your app. Use the artist, album, and song data included in [these JSON files][mock-json-data].
+
+[bossggle]: http://jsdev.learnersguild.org/goals/251-Init_1-Bossggle_Word_Game.html
+
+[express]: https://expressjs.com/
+[express-guide]: https://expressjs.com/en/guide/routing.html
+[ejs]: http://ejs.co/
+[blog-ejs-express]: https://coligo.io/templating-node-and-express-apps-with-ejs/
+[bootstrap]: http://getbootstrap.com/
+[pure-css]: https://purecss.io/
+
+[array-filter]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter?v=control
+
+[mock-json-data]: https://gist.github.com/learnersguild-dev/b90f65bba83d589e788b5a2b4ccfc1cb
+
+[mdn-localstorage]: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+
+[mit-license]: https://opensource.org/licenses/MIT
