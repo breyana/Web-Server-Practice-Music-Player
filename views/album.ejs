@@ -6,18 +6,22 @@
     <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
   </head>
   <body>
+
+    <%- include('partials/navbar') %>
+
     <div class="container">
-      <%- include('partials/navbar') %>
-    </div>
-    <p><%= title %></p>
-    <a href="/artists/<%= songs[0].artist_id %>">
-      <p><%= artist %></p>
-    </a>
-    <p><%= year %></p>
-    <div class="songs-list">
-      <% songs.forEach((song) => { %>
-        <p><%= song.title %> - Track Number: <%= song.track_no %> Length: <%= song.length %></p>
-      <% }) %>
+      <img class="album-art" src="http://www.fillmurray.com/100/100">
+      <p><%= title %></p>
+      <a href="/artists/<%= songs[0].artist_id %>">
+        <p><%= artist %></p>
+      </a>
+      <p><%= year %></p>
+      <p><%= songs.length %> Songs</p>
+      <div class="songs-list">
+        <% songs.forEach((song) => { %>
+          <p><%= song.title %> - Track Number: <%= song.track_no %> Length: <%= song.length %></p>
+          <% }) %>
+        </div>
     </div>
 
   </body>

@@ -14,15 +14,23 @@ function convertToMinutes(time) {
   return minutes + ':' + seconds
 }
 
-const albumsWithArtists = albums.map((album) => {
+const albumsFullData = albums.map((album) => {
   album.artist = artists.filter((artist) => {
     return artist.id === album.artist_id
   })[0].name
+  album.song_count = songs.reduce((acc, nextSong) => {
+    if (album.id === nextSong.album_id) {
+      acc++
+    } else {
+      acc = acc
+    }
+    return acc
+  }, 0)
   return album
 })
 
-const songsWithArtistAlbum = songs.map((song) => {
-  const correspondingAlbum = albumsWithArtists.filter((album) => {
+const songsFullData = songs.map((song) => {
+  const correspondingAlbum = albumsFullData.filter((album) => {
     return album.id === song.album_id
   })[0]
   song.album = correspondingAlbum.title
@@ -32,44 +40,47 @@ const songsWithArtistAlbum = songs.map((song) => {
   return song
 })
 
-router.get('/', function(request, response) {
-  response.render('index', { artists: artists })
+const artistsFullData = artists.map((artist) => {
+  artist.albums = albumsFullData.filter((album) => {
+    return album.artist_id == artist.id
+  })
+  return artist
 })
 
-router.get('/albums', function(request, response) {
+router.get('/', (request, response) => {
+  response.render('index', { artists: artistsFullData })
+})
+
+router.get('/albums', (request, response) => {
   response.render('albums', {
-    albums: albumsWithArtists
+    albums: albumsFullData
   })
 })
 
-router.get('/songs', function(request, response) {
+router.get('/songs', (request, response) => {
   response.render('songs', {
-    songs: songsWithArtistAlbum
+    songs: songsFullData
   })
 })
 
-router.get('/artists/:artist_id', function(request, response) {
-  const artist = artists.filter((artist) => {
+router.get('/artists/:artist_id', (request, response) => {
+  const artist = artistsFullData.filter((artist) => {
     return artist.id == request.params.artist_id
   })[0]
-
-  const artistAlbums = albums.filter((album) => {
-    return album.artist_id == request.params.artist_id
-  })
 
   response.render('artist', {
     name: artist.name,
     genre: artist.genre,
-    albums: artistAlbums
+    albums: artist.albums
   })
 })
 
-router.get('/albums/:album_id', function(request, response) {
-  const album = albumsWithArtists.filter((album) => {
+router.get('/albums/:album_id', (request, response) => {
+  const album = albumsFullData.filter((album) => {
     return album.id == request.params.album_id
   })[0]
 
-  const albumSongs = songsWithArtistAlbum.filter((song) => {
+  const albumSongs = songsFullData.filter((song) => {
     return song.album_id == request.params.album_id
   })
 

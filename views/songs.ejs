@@ -6,18 +6,19 @@
     <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
   </head>
   <body>
+    <%- include('partials/navbar') %>
+
     <div class="container">
-      <%- include('partials/navbar') %>
-    </div>
-    <div class="songs-list">
-      <% songs.forEach((song) => { %>
-        <h4 class="song-title"><%= song.title %></h4>
-        <a href="/artists/<%= song.artist_id %>" class="artist-info-link">
+      <div class="songs-list">
+        <% songs.forEach((song) => { %>
+          <h4 class="song-title"><%= song.title %></h4>
+          <a href="/artists/<%= song.artist_id %>" class="artist-info-link">
           <p class="song-artist"><%= song.artist %></p>
-        </a>
-        <p class="song-album"><%= song.album %></p>
-        <p class="song-album">Length: <%= song.length %></p>
-      <% }) %>
+          </a>
+          <p class="song-album"><%= song.album %></p>
+          <p class="song-album">Length: <%= song.length %></p>
+          <% }) %>
+        </div>
     </div>
   </body>
 </html>
