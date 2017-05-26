@@ -12,3 +12,8 @@ nav ul li {
 nav ul li a {
   padding: 10px;
 }
+
+.album-art {
+  float: left;
+  padding-right: 10px;
+}
