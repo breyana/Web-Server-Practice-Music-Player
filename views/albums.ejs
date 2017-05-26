@@ -12,6 +12,7 @@
     <div class="container">
       <div class="albums-list">
         <% albums.forEach((album) => { %>
+          <img class="album-art" src="http://www.fillmurray.com/100/100">
           <a href="/albums/<%= album.id %>" class="album-info-link">
           <h4 class="album-title"><%= album.title %></h4>
           </a>
